@@ -1,0 +1,49 @@
+table dim_date
+	lineageTag: 33c7db4f-b84a-4211-9c26-b3babf315e05
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d87d7262-9074-486e-ab68-402e4a78f0e6
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: e95aad26-607d-4bc1-870b-c1160c6989a6
+			defaultHierarchy: LocalDateTable_fd41de05-a685-4b38-9066-54aba7259f59.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column fiscal_year
+		dataType: string
+		lineageTag: 2224f559-1ea6-406c-9aec-ecbaa14fd6eb
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: string
+		lineageTag: 9e29ccf2-03c3-4fb5-be30-35997fa0f617
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("E:\power bi\projects\RPC12_Input_For_Participants\datasets\dim_date.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"fiscal_year", Int64.Type}, {"quarter", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

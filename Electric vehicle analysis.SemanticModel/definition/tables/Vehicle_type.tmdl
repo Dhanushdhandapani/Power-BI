@@ -1,0 +1,17 @@
+table Vehicle_type
+	lineageTag: 05bf8540-3325-4064-9698-3b362b6eb100
+
+	column vehicle_category
+		lineageTag: 50be8756-751f-4a97-b4cc-da9d428af82e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: electric_vehicle_sales_by_makers[vehicle_category]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Vehicle_type = calculated
+		mode: import
+		source = DISTINCT(electric_vehicle_sales_by_makers[vehicle_category])
+
+	annotation PBI_Id = 92f21d5353824cfdbbf831de596f88dd
+
