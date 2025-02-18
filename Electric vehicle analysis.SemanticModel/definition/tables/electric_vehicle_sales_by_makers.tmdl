@@ -1,0 +1,51 @@
+table electric_vehicle_sales_by_makers
+	lineageTag: dd2c871c-cbfa-42e6-b544-4b1edf0a7c52
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a7b9fab0-3724-4126-95ef-86a596b84221
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column vehicle_category
+		dataType: string
+		lineageTag: aece31cb-055e-46fa-aa6d-292bff9069fc
+		summarizeBy: none
+		sourceColumn: vehicle_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column maker
+		dataType: string
+		lineageTag: 229a8642-8512-4d1a-a73f-e3447c0410e9
+		summarizeBy: none
+		sourceColumn: maker
+
+		annotation SummarizationSetBy = Automatic
+
+	column electric_vehicles_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: 6202440d-6373-492a-a89c-a3907bd5ad90
+		summarizeBy: sum
+		sourceColumn: electric_vehicles_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	partition electric_vehicle_sales_by_makers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("E:\power bi\projects\RPC12_Input_For_Participants\datasets\electric_vehicle_sales_by_makers.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"vehicle_category", type text}, {"maker", type text}, {"electric_vehicles_sold", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

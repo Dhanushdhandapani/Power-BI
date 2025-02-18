@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 149.19781172818898,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 313,
+            "y": 0
+          },
+          "nodeIndex": "dim_date",
+          "nodeLineageTag": "33c7db4f-b84a-4211-9c26-b3babf315e05",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 0.46642352535434384,
+            "y": 231.16422384215915
+          },
+          "nodeIndex": "electric_vehicle_sales_by_makers",
+          "nodeLineageTag": "dd2c871c-cbfa-42e6-b544-4b1edf0a7c52",
+          "size": {
+            "height": 213,
+            "width": 318
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 710.15140186634062,
+            "y": 207.2808297234977
+          },
+          "nodeIndex": "electric_vehicle_sales_by_state",
+          "nodeLineageTag": "c75775bd-1b0d-4e18-802a-7e06e51816d2",
+          "size": {
+            "height": 218,
+            "width": 317
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 627.92857305876919,
+            "y": 0
+          },
+          "nodeIndex": "Vehicle_type",
+          "nodeLineageTag": "05bf8540-3325-4064-9698-3b362b6eb100",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1076.6849783409862,
+            "y": 170.08211192107956
+          },
+          "nodeIndex": "Report measures (2)",
+          "nodeLineageTag": "a708f9eb-20d3-4f48-8a07-d708dd33d82a",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 79.553182037699784,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

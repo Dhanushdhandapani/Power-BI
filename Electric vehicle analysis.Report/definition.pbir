@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../Electric vehicle analysis.SemanticModel"
+    },
+    "byConnection": null
+  }
+}

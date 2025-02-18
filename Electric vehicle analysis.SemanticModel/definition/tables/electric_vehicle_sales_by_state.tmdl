@@ -1,0 +1,60 @@
+table electric_vehicle_sales_by_state
+	lineageTag: c75775bd-1b0d-4e18-802a-7e06e51816d2
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b3e1de84-553e-4bba-bd17-72bea0070cc1
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column state
+		dataType: string
+		lineageTag: 14c4214f-8575-4e53-a06f-b1a8fa09ad97
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column vehicle_category
+		dataType: string
+		lineageTag: af3158dd-9d70-48e6-af0e-8e4742358aaa
+		summarizeBy: none
+		sourceColumn: vehicle_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column electric_vehicles_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: 7bc06a3a-c7a3-4ce2-b98a-25cbec697de2
+		summarizeBy: sum
+		sourceColumn: electric_vehicles_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_vehicles_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: 44708076-91c8-4b16-a312-0cbe95fe1b24
+		summarizeBy: sum
+		sourceColumn: total_vehicles_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	partition electric_vehicle_sales_by_state = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("E:\power bi\projects\RPC12_Input_For_Participants\datasets\electric_vehicle_sales_by_state.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"state", type text}, {"vehicle_category", type text}, {"electric_vehicles_sold", Int64.Type}, {"total_vehicles_sold", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

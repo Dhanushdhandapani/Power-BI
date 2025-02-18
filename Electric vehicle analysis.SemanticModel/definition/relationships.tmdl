@@ -1,0 +1,21 @@
+relationship e95aad26-607d-4bc1-870b-c1160c6989a6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date
+	toColumn: LocalDateTable_fd41de05-a685-4b38-9066-54aba7259f59.Date
+
+relationship 2ee4aa59-c60c-fb98-57f8-79dce53804f9
+	fromColumn: electric_vehicle_sales_by_makers.date
+	toColumn: dim_date.date
+
+relationship 8586d98b-9883-04ee-8962-ef39897e9592
+	fromColumn: electric_vehicle_sales_by_state.date
+	toColumn: dim_date.date
+
+relationship 2ec709c0-1c14-e9a5-a88f-1d88d9c60e89
+	fromColumn: electric_vehicle_sales_by_makers.vehicle_category
+	toColumn: Vehicle_type.vehicle_category
+
+relationship efb2d6d2-c7ec-0bfe-b12a-c7548fc7eada
+	fromColumn: electric_vehicle_sales_by_state.vehicle_category
+	toColumn: Vehicle_type.vehicle_category
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Electric vehicle analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cad8b225-10cb-4326-b8ca-e9d792863b48"
+  }
+}
